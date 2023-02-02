@@ -54,7 +54,7 @@ botonAgregar.addEventListener("click", function(){
         <div style="width:70%">${tarea.descripcion}</div>
         <div style="width:10%">
             <input type="checkbox" id="completado-${tarea.id}" ${checkBoxChequeado} 
-            onchange="actualizarTarea${tarea.id}">
+            onchange="(actualizarTarea(${tarea.id})">
         </div>
         <div style="width:10%" class="mt-2">
             <button class="btn btn-danger">X</button>
