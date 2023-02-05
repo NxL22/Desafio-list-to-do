@@ -66,7 +66,7 @@ function renderTareas() {
             onchange="actualizarTarea(${tarea.id})">
         </div>
         <div style="width:10%" class="mt-2">
-            <button "eliminar-${tarea.id}" class="btn btn-danger">X</button>
+            <button id="eliminar-${tarea.id}" class="btn btn-danger">X</button>
         </div>
         `;
 
@@ -89,7 +89,7 @@ function actualizarTarea(id) {
 
 //aca intento el eliminar
 function eliminarTarea(id) {
-    
+
     const botonEliminar = document.querySelector("#eliminar-" + id);
 
     const indexTarea = tareas.findIndex(tarea => tarea.id == id)
