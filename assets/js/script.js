@@ -12,7 +12,7 @@ let tareas = [
     {
         id: 3,
         descripcion: "sacar a pasear a tobby",
-        completado: false    
+        completado: false
     },
 ];
 
@@ -24,62 +24,98 @@ const spanTareasRealizadas = document.querySelector("#tareasRealizadas")
 const divTareas = document.querySelector("#tareas")
 
 let nuevoId = 4;
-    renderTareas(); 
-    tareasTotales();
-    TareasRealizadas();
+renderTareas();
+tareasTotales();
+tareasRealizadas();
 
-botonAgregar.addEventListener("click", function(){
+botonAgregar.addEventListener("click", function () {
+
+    crearTarea();
+
+    renderTareas();
+
+});
+
+function crearTarea() {
     let nuevaTarea = inputAgregar.value;
-
 
     tareas.push({
         id: nuevoId,
-        descripcion: nuevaTarea, 
+        descripcion: nuevaTarea,
         completado: false
     });
 
     nuevoId++;
+}
 
+function renderTareas() {
     let html = "";
 
-    tareas.forEach(function(tarea){
+    tareas.forEach(function (tarea) {
         let checkBoxChequeado = "";
-        
-        if (tarea.completado){
+
+        if (tarea.completado) {
             checkBoxChequeado = "checked";
-        } 
+        }
 
         let template = ` 
         <div style="width:10%">${tarea.id}/div>
         <div style="width:70%">${tarea.descripcion}</div>
         <div style="width:10%">
             <input type="checkbox" id="completado-${tarea.id}" ${checkBoxChequeado} 
-            onchange="(actualizarTarea(${tarea.id})">
+            onchange="actualizarTarea(${tarea.id})">
         </div>
         <div style="width:10%" class="mt-2">
-            <button class="btn btn-danger">X</button>
+            <button "eliminar-${tarea.id}" class="btn btn-danger">X</button>
         </div>
-        `
+        `;
+
+        html += template;
     })
 
     divTareas.innerHTML = html;
-
-})
-
-function actualizarTarea(id) {
-    const indexTarea = tareas.findIndex(tarea => tarea.id === id)
-    
-    const completada = document.querySelector("completado-" + id).checked;
-
-    tareas[indexTarea].completado;
-
-    // renderTareas(); sirven estas para borrar tarea
-    //tareasTotales();
-    TareasRealizadas();
 }
 
-function tareasCompletadas(parans) {
-    let tareasCompletadas = tarea.filter(tarea => tarea.completado)
+function actualizarTarea(id) {
+
+    const indexTarea = tareas.findIndex(tarea => tarea.id == id);
+
+    const completada = document.querySelector("#completado-" + id).checked;
+
+    tareas[indexTarea].completado = completada;
+
+    tareasRealizadas();
+}
+
+//aca intento el eliminar
+function eliminarTarea(id) {
+    
+    const botonEliminar = document.querySelector("#eliminar-" + id);
+
+    const indexTarea = tareas.findIndex(tarea => tarea.id == id)
+
+    tareas.splice(indexTarea, 1);
+
+
+    renderTareas();
+    tareasTotales();
+    tareasRealizadas();
+}
+//aca  termino
+
+
+
+
+
+
+function tareasTotales() {
+    let total = tareas.length;
+
+    spanTareasTotales.innerHTML = total;
+}
+
+function tareasRealizadas() {
+    let tareasCompletadas = tareas.filter(tarea => tarea.completado);
     let realizadas = tareasCompletadas.length;
 
     spanTareasRealizadas.innerHTML = realizadas;
