@@ -6,12 +6,12 @@ let tareas = [
     },
     {
         id: 2,
-        descripcion: "estudiar para la prueba",
+        descripcion: "Estudiar para la prueba",
         completado: false
     },
     {
         id: 3,
-        descripcion: "sacar a pasear a tobby",
+        descripcion: "Sacar a pasear a tobby",
         completado: false
     },
 ];
@@ -21,7 +21,7 @@ const inputAgregar = document.querySelector("#inputAgregar")
 const botonAgregar = document.querySelector("#btnAgregar")
 const spanTareasTotales = document.querySelector("#tareasTotales")
 const spanTareasRealizadas = document.querySelector("#tareasRealizadas")
-const divTareas = document.querySelector("#tareas")
+const divTareas = document.querySelector("#divTareas")
 
 let nuevoId = 4;
 renderTareas();
@@ -31,8 +31,9 @@ tareasRealizadas();
 botonAgregar.addEventListener("click", function () {
 
     crearTarea();
-
+    tareasTotales();
     renderTareas();
+    borrarInput();
 
 });
 
@@ -59,14 +60,14 @@ function renderTareas() {
         }
 
         let template = ` 
-        <div style="width:10%">${tarea.id}/div>
+        <div style="width:10%">${tarea.id}</div>
         <div style="width:70%">${tarea.descripcion}</div>
         <div style="width:10%">
             <input type="checkbox" id="completado-${tarea.id}" ${checkBoxChequeado} 
             onchange="actualizarTarea(${tarea.id})">
         </div>
         <div style="width:10%" class="mt-2">
-            <button id="eliminar-${tarea.id}" class="btn btn-danger">X</button>
+            <button onclick = "eliminarTarea(${tarea.id})" class="btn btn-danger">X</button>
         </div>
         `;
 
@@ -90,9 +91,7 @@ function actualizarTarea(id) {
 //aca intento el eliminar
 function eliminarTarea(id) {
 
-    const botonEliminar = document.querySelector("#eliminar-" + id);
-
-    const indexTarea = tareas.findIndex(tarea => tarea.id == id)
+    const indexTarea = tareas.findIndex(tarea => tarea.id === id)
 
     tareas.splice(indexTarea, 1);
 
@@ -101,12 +100,6 @@ function eliminarTarea(id) {
     tareasTotales();
     tareasRealizadas();
 }
-//aca  termino
-
-
-
-
-
 
 function tareasTotales() {
     let total = tareas.length;
@@ -119,4 +112,9 @@ function tareasRealizadas() {
     let realizadas = tareasCompletadas.length;
 
     spanTareasRealizadas.innerHTML = realizadas;
+}
+
+function borrarInput() {
+    const resetinput = document.getElementById("inputAgregar");
+    resetinput.value="";
 }

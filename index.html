@@ -10,8 +10,12 @@
       rel="stylesheet"
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
-      <link rel="stylesheet" href="assets/css/style.css">
+      <link
+      rel="stylesheet"
+      href="assets/css/style.css"
+    />
   </head>
+
   <body>
     <div class="container">
       <h1>Todo List</h1>
@@ -19,9 +23,9 @@
       <hr />
 
       <!-- Input agregar -->
-      <label for="inputAgregar">Nueva tarea</label>
+      <label for="inputAgregar">Nueva Tarea <strong>:</strong></label>
       <div class="d-flex">
-        <input type="text" class="form-control me-5" id="inputAgregar" >
+        <input placeholder="Hey 👽, Enter Your Quest!" type="text" class="form-control me-5" id="inputAgregar">
         <button id="btnAgregar" class="btn btn-success">Agregar</button>
       </div>
 
@@ -31,22 +35,15 @@
           Realizadas: <span id="tareasRealizadas" class="fw-bold"></span>
         </p>
 
-
-<!--Aca es la parte del resumen del total y de realizadas-->
+        <!--Aca es la parte del resumen del total y de realizadas-->
         <div class="w-50">
-          <div id="divTareas" class="d-flex fw-bold">
+          <div class="d-flex fw-bold flex-wrap">
             <div style="width: 10%">ID</div>
             <div style="width: 90%">Tarea</div>
           </div>
+          <div id="divTareas" class="d-flex flex-wrap"></div>
         </div>
-      </div>
     </div>
-
-
-
-
-<!--Aca es la parte de las tareas-->
-
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

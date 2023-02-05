@@ -1,11 +1,20 @@
-.tablaDelId {
+.widthDe10 {
     width: 10%
 }
 
-.tablaDeTarea{
+.widthDe70{
     width: 70%
 }
 
 .widthDe90{
     width: 90%;
+}
+
+body{
+    background-color: black;
+    color: white;
+}
+
+h1{
+    color: aqua;
 }
