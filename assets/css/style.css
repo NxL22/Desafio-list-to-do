@@ -15,6 +15,40 @@ body{
     color: white;
 }
 
+p, span{
+    color: #33c76c;
+}
+
 h1{
-    color: aqua;
+    color: #33c76c;
+    text-align: center;
+    font-family: monospace;
+    font-weight: 900;
+    margin-top: 1em;
+    font-size: 3em;
+}
+
+.btn{
+    margin: 3px;
+    width: 30px;
+    height: 30px;
+}
+
+input[type="checkbox"] {
+    width: 27px;
+    height: 27px;
+    margin: 3px;
+}
+
+.btn-1{
+    background-color:#33c76c;
+    border-color: #0f602e;
+    border-radius: 18%;
+    width: 12em;
+}
+
+.btn-agregar{
+    color: black;
+    font-style: oblique;
+    font-weight: 600;
 }
